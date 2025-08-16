@@ -54,6 +54,7 @@ function RegisterComponent() {
             label="Password"
             type="password"
             placeholder="••••••••"
+            showPasswordToggle={true}
             {...registerField('password')}
             error={errors.password?.message}
           />

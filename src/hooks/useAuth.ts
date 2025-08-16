@@ -54,11 +54,14 @@ export const useLogin = () => {
   const mutation = useMutation({
     mutationFn: loginUser,
     onSuccess: (data: any) => {
+      console.log('data:', data)
       login(data.token, data.user)
-      if (data.user.role === 'colleague') navigate({ to: '/my-savings' })
-      if (data.user.role === 'admin') navigate({ to: '/admin' })
+      if (data.user.role === 'colleague') {
+        navigate({ to: '/my-savings' })
+      } else if (data.user.role === 'admin') {
+        navigate({ to: '/admin' })
+      }
       toast.success('Login successful!')
-      navigate({ to: '/my-savings' })
     },
     onError: (error: ApiError) => {
       if (error.errors) {
